@@ -4,7 +4,6 @@ module Wonga
       def initialize(api_client, logger)
         @logger = logger
         @api_client = api_client
-        @publisher = publisher
       end
 
       def handle_message(message)
