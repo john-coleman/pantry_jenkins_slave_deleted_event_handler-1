@@ -8,7 +8,7 @@ module Wonga
 
       def handle_message(message)
         @logger.info "Updating deleted status for Jenkins slave: #{message['server_ip']}"
-        @api_client.send_put_request("/api/jenkins_slaves/#{message['id']}", { removed: true })
+        @api_client.send_put_request("/api/jenkins_slaves/#{message['jenkins_slave_id']}", { removed: true })
       end
     end
   end
