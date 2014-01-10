@@ -11,7 +11,16 @@ describe Wonga::Daemon::PantryJenkinsSlaveDeletedEventHandler do
   describe "#handle_message" do
     it "sends put request" do
       subject.handle_message(message)
-      expect(api_client).to have_received(:send_put_request).with("/api/jenkins_slaves/#{message['jenkins_slave_id']}", {:removed => true})
+      expect(api_client).to have_received(:send_put_request).with(
+        "/api/jenkins_slaves/#{message['jenkins_slave_id']}",
+        {
+          "node" => "jenkins-linux-agent.vagrant",
+          "server_ip" => "127.0.0.1",
+          "server_port" => "8080",
+          'id' => "443444",
+          :removed => true
+        }
+      )
     end
   end
 end
