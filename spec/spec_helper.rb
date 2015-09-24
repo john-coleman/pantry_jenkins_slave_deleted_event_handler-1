@@ -8,12 +8,10 @@ unless ENV["SKIP_COV"]
   SimpleCov.start
 end
 
-require 'aws'
-require 'rspec/fire'
 require 'spec_support/shared_daemons'
-
-AWS.config :access_key_id=>"test", :secret_access_key=>"test"
-AWS.stub!
+require 'rspec/fire'
+require 'logger'
+require 'webmock'
 
 RSpec.configure do |config|
   config.include(RSpec::Fire)
